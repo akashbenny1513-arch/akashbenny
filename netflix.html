@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone (Educational)</title>
+    <link rel="stylesheet" href="netflix.css">
+</head>
+    <style>
+        :root {
+        --bg: #000;
+        --card: #141414;
+        --text: #fff;
+        --muted: #b3b3b3;
+        --accent: #e50914;
+        --accent-2: #b20710;
+        --ring: rgba(229, 9, 20, 0.5);
+        --radius: 16px;
+      }
+      
+      * { 
+        box-sizing: border-box; 
+      }
+      html, body { 
+        height: 100%; 
+      }
+      body {
+        margin: 0px;
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.45;
+      }
+
+      a { 
+        color: inherit; 
+        text-decoration: none; 
+      }
+      img {
+         display: block;
+          width: 100%; 
+          height: 100%;
+           object-fit: cover; 
+          }
+      button {
+         font: inherit; 
+        }
+
+.navbar {
+        position: sticky; 
+        top: 0; 
+        z-index: 50;
+        display: flex; 
+      
+        justify-content: space-between;
+        padding: 20px;
+
+      
+      }
+      .logo {
+        font-weight: 800;
+        letter-spacing: 0.5px; 
+        font-size: clamp(22px, 4vw, 28px);
+        color: var(--accent);
+      }
+      .nav-links { 
+        list-style: none;
+         display: flex; 
+         gap: 18px;
+          margin: 0; 
+          padding: 0; 
+        }
+      .nav-links a {
+         color: var(--muted);
+          font-weight: 600;
+         }
+      .nav-links a:hover {
+         color: var(--text);
+         }
+      .btn { 
+        padding: 8px 14px; 
+        border-radius: 999px;
+         border: 0;
+          cursor: pointer;
+         }
+      .btn--accent {
+         background: var(--accent); 
+         color: #fff; 
+        }
+      .btn--accent:hover { 
+        background: var(--accent-2); 
+      }
+      
+
+/* Hero */
+.hero {
+        position: relative;
+         isolation: isolate;
+        font-weight: 800;
+        min-height: min(80vh, 780px);
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding:20px;
+        margin: 0 10px;
+        overflow: clip;
+        background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f562aaf4-5dbb-4603-a32b-6ef6c2230136/dh0w8qv-9d8ee6b2-b41a-4681-ab9b-8a227560dc75.jpg/v1/fill/w_1192,h_670,q_70,strp/the_netflix_login_background__canada__2024___by_logofeveryt_dh0w8qv-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvZjU2MmFhZjQtNWRiYi00NjAzLWEzMmItNmVmNmMyMjMwMTM2XC9kaDB3OHF2LTlkOGVlNmIyLWI0MWEtNDY4MS1hYjliLThhMjI3NTYwZGM3NS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.LOYKSxIDqfPwWHR0SSJ-ugGQ6bECF0yO6Cmc0F26CQs);
+      }
+#heroTitle{
+  font-size: 3em;
+}
+.hero p{
+  font-size: 1em;
+}
+.btn{
+  font-size: 1em;
+}
+
+/* Content */
+.content {
+    padding: 10px;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+    margin-left: 50px;
+}
+
+.row {
+    display: flex;
+    gap:10px;
+    margin: 0 50px;
+  
+}
+.row img {
+    width: 270px;
+    height: 455px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* Footer */
+.footer {
+    background-color: #111;
+    padding: 40px;
+    text-align: left;
+    color: #777;
+}
+      .footer { 
+        border-top: 1px solid #222;
+         padding: 40px clamp(16px, 4vw, 48px);
+          color: var(--muted);
+         }
+      .footer .grid {
+         display: grid;
+          grid-template-columns: repeat(4, 1fr);
+           gap: 16px;
+           }
+      .footer a {
+         color: var(--muted);
+         }
+      .footer a:hover { 
+        color: var(--text); 
+      }
+      .copy {
+         margin-top: 24px;
+         font-size: 13px; 
+         color: #777; 
+        text-align: center;
+ }
+
+    </style>
+    
+<body>
+    <!-- Navbar -->
+
+    <header class="navbar" role="banner">
+      <div class="logo" aria-label="Netflix logo">NETFLIX</div>
+      <ul class="nav-links" role="navigation" aria-label="Primary">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#tv">TV Shows</a></li>
+        <li><a href="#movies">Movies</a></li>
+        <li><a href="#mylist">My List</a></li>
+      </ul>
+      </div>
+    </header>
+
+    <!-- Hero -->
+
+    <section id="home" class="hero" aria-labelledby="heroTitle">
+      <div class="hero">
+                <button class="btn btn--accent" aria-label="Join now">Join Now</button>
+
+        <h1 id="heroTitle">Unlimited movies,TV shows and more</h1>
+        <p>Starts at ₹149. Cancel at any time.</p>
+        <p>Ready to watch? Enter your email to create or restart your membership.</p>
+        <div class="cta">
+          <input style="padding: 15px;border-radius: 10px;border: none;" type="email" placeholder="Email address" aria-label="Email address" />
+          <button class="btn btn--accent">Get Started</button>
+        </div>
+    </section>
+  
+    <!-- Content Sections -->
+    <section class="content">
+        <h2>Popular on Netflix</h2>
+        <div class="row">
+            <img src="image/ajith.jpeg" alt="Movie 1" >
+            <img src="image/thalaivaa.jpeg" alt="Movie 2">
+            <img src="image/dhanush.jpeg" alt="Movie 3">
+            <img src="image/suri movie.jpeg" alt="Movie 4">
+        
+        </div>
+    </section>
+
+    <section class="content">
+        <h2>Trending Now</h2>
+        <div class="row">
+
+            <img src="image/Avatar.jpeg" alt="Movie 3"> 
+            <img src="image/Aventures.jpeg" alt="Movie 4">
+            <img src="image/X-man.jpeg" alt="Movie 4">
+            <img src="image/Spider man.jpeg" alt="Movie 4">
+        
+
+        </div>
+    </section>
+
+    <section class="content" >
+        <h2>Watch Again</h2>
+        <div class="row">
+
+            <img src="image/chotta bheam.jpeg" alt="Movie 2">
+            <img src="image/chinchan.webp" alt="Movie 4">
+            <img src="image/doremon.png" alt="Movie 4">
+            <img src="image/chinchan.webp" alt="Movie 4">
+    
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="footer" role="contentinfo">
+      <p>Questions? Call 000-000-0000</p>
+      <div class="grid" aria-label="Footer links">
+        <nav aria-label="FAQ">
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Investor Relations</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Speed Test</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Help">
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Cookie Preferences</a></li>
+            <li><a href="#">Legal Notices</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Account">
+          <ul>
+            <li><a href="#">Account</a></li>
+            <li><a href="#">Ways to Watch</a></li>
+            <li><a href="#">Corporate Information</a></li>
+            <li><a href="#">Only on Netflix</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="More">
+          <ul>
+            <li><a href="#">Media Center</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="copy">© 2025 Netflix Clone • Educational use only</p>
+    </footer>
+
+</body>
+
+</html>
